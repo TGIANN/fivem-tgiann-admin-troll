@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<Dat54>
+  <Version value="7314721"/>
+  <ContainerPaths>
+    <Item>tgiannadmintroll\sounds</Item>
+  </ContainerPaths>
+  <Items>
+    <Item type="SimpleSound">
+      <Name>fart1_sp</Name>
+      <Header>
+        <Flags value="0x00008004"/>
+        <Volume value="200"/>
+        <Category>scripted</Category>
+      </Header>
+      <ContainerName>tgiannadmintroll/sounds</ContainerName>
+      <FileName>fart1</FileName>
+      <WaveSlotNum value="0"/>
+    </Item>
+    <Item type="SimpleSound">
+      <Name>fart2_sp</Name>
+      <Header>
+        <Flags value="0x00008004"/>
+        <Volume value="200"/>
+        <Category>scripted</Category>
+      </Header>
+      <ContainerName>tgiannadmintroll/sounds</ContainerName>
+      <FileName>fart2</FileName>
+      <WaveSlotNum value="0"/>
+    </Item>
+    <Item type="SimpleSound">
+      <Name>siren_sp</Name>
+      <Header>
+        <Flags value="0x00008004"/>
+        <Volume value="200"/>
+        <Category>scripted</Category>
+      </Header>
+      <ContainerName>tgiannadmintroll/sounds</ContainerName>
+      <FileName>siren</FileName>
+      <WaveSlotNum value="0"/>
+    </Item>
+    <Item type="SoundSet">
+      <Name>tgiann_admin_troll</Name>
+      <Header>
+        <Flags value="0xAAAAAAAA"/>
+      </Header>
+      <SoundSets>
+        <Item>
+          <ScriptName>fart1</ScriptName>
+          <ChildSound>fart1_sp</ChildSound>
+        </Item>
+        <Item>
+          <ScriptName>fart2</ScriptName>
+          <ChildSound>fart2_sp</ChildSound>
+        </Item>
+        <Item>
+          <ScriptName>siren</ScriptName>
+          <ChildSound>siren_sp</ChildSound>
+        </Item>
+      </SoundSets>
+    </Item>
+  </Items>
+</Dat54>

@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<AudioWaveContainer>
+  <Version value="1"/>
+  <ChunkIndices value="True"/>
+  <Streams>
+    <Item>
+      <Name>fart1</Name>
+      <FileName>fart1_left.wav</FileName>
+      <Chunks>
+        <Item>
+          <Type>peak</Type>
+        </Item>
+        <Item>
+          <Type>data</Type>
+        </Item>
+        <Item>
+          <Type>format</Type>
+          <Codec>ADPCM</Codec>
+          <Samples value="58549"/>
+          <SampleRate value="32000"/>
+          <Headroom value="-100"/>
+          <PlayBegin value="0"/>
+          <PlayEnd value="0"/>
+          <LoopBegin value="0"/>
+          <LoopEnd value="0"/>
+          <LoopPoint value="-1"/>
+          <Peak unk="0"/>
+        </Item>
+      </Chunks>
+    </Item>
+    <Item>
+      <Name>fart2</Name>
+      <FileName>fart2_left.wav</FileName>
+      <Chunks>
+        <Item>
+          <Type>peak</Type>
+        </Item>
+        <Item>
+          <Type>data</Type>
+        </Item>
+        <Item>
+          <Type>format</Type>
+          <Codec>ADPCM</Codec>
+          <Samples value="716416"/>
+          <SampleRate value="32000"/>
+          <Headroom value="-100"/>
+          <PlayBegin value="0"/>
+          <PlayEnd value="0"/>
+          <LoopBegin value="0"/>
+          <LoopEnd value="0"/>
+          <LoopPoint value="-1"/>
+          <Peak unk="0"/>
+        </Item>
+      </Chunks>
+    </Item>
+    <Item>
+      <Name>siren</Name>
+      <FileName>siren_left.wav</FileName>
+      <Chunks>
+        <Item>
+          <Type>peak</Type>
+        </Item>
+        <Item>
+          <Type>data</Type>
+        </Item>
+        <Item>
+          <Type>format</Type>
+          <Codec>ADPCM</Codec>
+          <Samples value="4157227"/>
+          <SampleRate value="32000"/>
+          <Headroom value="-100"/>
+          <PlayBegin value="0"/>
+          <PlayEnd value="0"/>
+          <LoopBegin value="0"/>
+          <LoopEnd value="0"/>
+          <LoopPoint value="-1"/>
+          <Peak unk="0"/>
+        </Item>
+      </Chunks>
+    </Item>
+  </Streams>
+</AudioWaveContainer>
