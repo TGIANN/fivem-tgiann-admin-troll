@@ -10,6 +10,7 @@ import {
 import { debugPrint } from "utils";
 import menuOpenedAdminList from "./classes/menuOpenedAdminList/adminList";
 import config from "@common/config";
+import { isAdmin } from "./utils";
 
 addCommand(
   "troll",
@@ -69,6 +70,10 @@ on("playerDropped", () => {
 onNet(
   `${cache.resource}:performAction`,
   (data: PerformAction, variables: TrollActionVariables) => {
+    const playerId = global.source;
+
+    if (isAdmin(playerId)) return;
+
     const { actionType, src } = data;
     const serverPlayer = serverPlayerList.getPlayer(src);
     if (!serverPlayer) return;
@@ -90,6 +95,9 @@ onNet(
 
 onNet(`${cache.resource}:stopTrollAction`, (data: PerformAction) => {
   const playerId = global.source;
+
+  if (isAdmin(playerId)) return;
+
   const { actionType, src } = data;
   const serverPlayer = serverPlayerList.getPlayer(src);
   if (!serverPlayer) return;
@@ -115,6 +123,17 @@ onNet(`${cache.resource}:trolStopped`, (trollName: TrollName) => {
 });
 
 onNet(`${cache.resource}:playSound`, (soundFile: string) => {
+  const playerId = global.source;
+
+  const serverPlayer = serverPlayerList.getPlayer(playerId);
+  if (!serverPlayer) return;
+
+  if (
+    !serverPlayer.trollIsActive("fart_type_1") &&
+    !serverPlayer.trollIsActive("fart_type_2")
+  )
+    return;
+
   const playerState = Player(global.source);
   playerState.state.set("tgiann_troll_sound", soundFile, true);
 });
@@ -128,23 +147,33 @@ onNet(`${cache.resource}:entitySpawned`, (netId: number) => {
   const playerId = global.source;
   const serverPlayer = serverPlayerList.getPlayer(playerId);
   if (!serverPlayer) return;
+
   serverPlayer.addEntity(netId);
 });
 
 onNet(`${cache.resource}:deleteEntity`, (netId: number) => {
   const playerId = global.source;
 
+  const serverPlayer = serverPlayerList.getPlayer(playerId);
+  if (!serverPlayer) return;
+
+  if (!serverPlayer.isEntityOwnedByPlayer(netId)) return;
+
   const entity = NetworkGetEntityFromNetworkId(netId);
   if (!entity || !DoesEntityExist(entity)) return;
 
   DeleteEntity(entity);
 
-  const serverPlayer = serverPlayerList.getPlayer(playerId);
-  if (!serverPlayer) return;
   serverPlayer.removeEntity(netId);
 });
 
 onNet(`${cache.resource}:server:spawnUfo`, (coords: number[]) => {
+  const playerId = global.source;
+  const serverPlayer = serverPlayerList.getPlayer(playerId);
+  if (!serverPlayer) return;
+
+  if (!serverPlayer.trollIsActive("ufo_kidnap")) return;
+
   emitNet(`${cache.resource}:client:spawnUfo`, -1, coords, global.source);
 });
 
@@ -155,6 +184,10 @@ onNet(`${cache.resource}:server:deleteUfo`, () => {
 onNet(
   `${cache.resource}:forceKeyboardControl`,
   (src: number, key: ForceControlKey, action: "released" | "pressed") => {
+    const playerId = global.source;
+
+    if (isAdmin(playerId)) return;
+
     emitNet(`${cache.resource}:forceControlApply`, src, key, action);
   }
 );

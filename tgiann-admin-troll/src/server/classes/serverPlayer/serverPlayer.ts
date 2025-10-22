@@ -6,16 +6,17 @@ import { debugPrint } from "@common/utils";
 export interface ServerPlayerType extends Player {
   updatePlayerName(name: string): void;
   playTroll(
-    troll: string,
+    troll: TrollName,
     variables: TrollActionVariables
   ): [boolean, string | null];
-  stopTroll(troll: string): void;
-  trollStopped(troll: string): void;
-  trollIsActive(troll: string): boolean;
+  stopTroll(troll: TrollName): void;
+  trollStopped(troll: TrollName): void;
+  trollIsActive(troll: TrollName): boolean;
   playerIsOnline(): boolean;
   addEntity(netId: number): void;
   removeEntity(netId: number): void;
   getAllEntities(): number[];
+  isEntityOwnedByPlayer(netId: number): boolean;
   getTrollVariables(troll: TrollName): TrollActionVariables | null;
 }
 
@@ -49,6 +50,10 @@ class ServerPlayer implements ServerPlayerType {
 
   getAllEntities(): number[] {
     return this.entityList;
+  }
+
+  isEntityOwnedByPlayer(netId: number): boolean {
+    return this.entityList.includes(netId);
   }
 
   removeEntity(netId: number): void {
