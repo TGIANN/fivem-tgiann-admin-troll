@@ -1,7 +1,7 @@
 {
   "name": "fivem-tgiann-admin-troll",
   "author": "TGIANN",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "license": "",
   "description": "",
   "type": "module",
@@ -49,6 +49,7 @@
     "@communityox/ox_lib": "latest",
     "@eslint/js": "^9.36.0",
     "@nativewrappers/fivem": "latest",
+    "@radix-ui/react-tooltip": "^1.2.8",
     "@types/node": "^24.7.2",
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.9",

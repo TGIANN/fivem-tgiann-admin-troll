@@ -42,8 +42,8 @@ createBuilder(
     await createFxmanifest({
       client_scripts: [outfiles.client],
       server_scripts: [outfiles.server],
-      files: ["lib/init.lua", "lib/client/**.lua", "locales/*.json", ...files],
-      dependencies: ["/server:13068", "/onesync"],
+      files: ["locales/*.json", ...files],
+      dependencies: ["/server:13068", "/onesync", "tgiann-admin-troll-assets"],
       metadata: {
         ui_page: "dist/web/index.html",
         node_version: "22",

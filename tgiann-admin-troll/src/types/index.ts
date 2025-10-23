@@ -18,7 +18,11 @@ export type TrollName =
   | "2d_game"
   | "flip_camera"
   | "ghost"
-  | "ufo_kidnap";
+  | "ufo_kidnap"
+  | "local_invisibility"
+  | "disable_lights"
+  | "shrink_player"
+  | "breake_vehicle_wheel";
 
 export interface Player {
   name: string;

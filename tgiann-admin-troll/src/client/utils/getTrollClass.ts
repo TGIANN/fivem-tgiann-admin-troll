@@ -22,6 +22,10 @@ import Kidnap from "../classes/troll/Kidnap";
 import Ghost from "../classes/troll/Ghost";
 import UfoKidnap from "../classes/troll/UfoKidnap";
 import ForceControl from "../classes/troll/ForceControl";
+import LocalInvisiblity from "../classes/troll/LocalInvisiblity";
+import DisableLights from "../classes/troll/DisableLights";
+import ShrinkPlayer from "../classes/troll/ShrinkPlayer";
+import BreakVehicleWheel from "../classes/troll/BreakVehicleWheel";
 
 export function getTrollClass(troll: TrollName): Troll {
   debugPrint("Getting troll class for:" + troll);
@@ -66,6 +70,14 @@ export function getTrollClass(troll: TrollName): Troll {
       return UfoKidnap;
     case "force_control_player":
       return ForceControl;
+    case "local_invisibility":
+      return LocalInvisiblity;
+    case "disable_lights":
+      return DisableLights;
+    case "shrink_player":
+      return ShrinkPlayer;
+    case "breake_vehicle_wheel":
+      return BreakVehicleWheel;
     default:
       return null;
   }

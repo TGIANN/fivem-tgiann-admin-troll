@@ -7,6 +7,8 @@ const trollActions: TrollAction[] = [
     label: "TROLL_FART_LABEL_1",
     description: "TROLL_FART_DESCRIPTION",
     buttonLabel: "TROLL_FART_BUTTON",
+    toggle: false,
+    isSync: true,
   },
   {
     type: "fart_type_2",
@@ -15,6 +17,7 @@ const trollActions: TrollAction[] = [
     description: "TROLL_FART_DESCRIPTION",
     buttonLabel: "TROLL_FART_BUTTON",
     toggle: true,
+    isSync: true,
   },
   {
     type: "attack_npc",
@@ -23,6 +26,7 @@ const trollActions: TrollAction[] = [
     description: "TROLL_ATTACK_NPC_DESCRIPTION",
     buttonLabel: "TROLL_ATTACK_NPC_BUTTON",
     toggle: true,
+    isSync: true,
   },
   {
     type: "attack_animal",
@@ -31,6 +35,7 @@ const trollActions: TrollAction[] = [
     description: "TROLL_ATTACK_ANIMAL_DESCRIPTION",
     buttonLabel: "TROLL_ATTACK_ANIMAL_BUTTON",
     toggle: true,
+    isSync: true,
   },
   {
     type: "kidnap",
@@ -38,6 +43,8 @@ const trollActions: TrollAction[] = [
     label: "TROLL_KIDNAP_LABEL",
     description: "TROLL_KIDNAP_DESCRIPTION",
     buttonLabel: "TROLL_KIDNAP_BUTTON",
+    toggle: false,
+    isSync: true,
   },
   {
     type: "ufo_kidnap",
@@ -45,6 +52,8 @@ const trollActions: TrollAction[] = [
     label: "TROLL_UFO_KIDNAP_LABEL",
     description: "TROLL_UFO_KIDNAP_DESCRIPTION",
     buttonLabel: "TROLL_UFO_KIDNAP_BUTTON",
+    toggle: false,
+    isSync: true,
   },
   {
     type: "flame",
@@ -53,6 +62,7 @@ const trollActions: TrollAction[] = [
     description: "TROLL_FLAME_DESCRIPTION",
     buttonLabel: "TROLL_FLAME_BUTTON",
     toggle: true,
+    isSync: true,
   },
   {
     type: "force_control_player",
@@ -61,6 +71,7 @@ const trollActions: TrollAction[] = [
     description: "TROLL_FORCE_CONTROL_PLAYER_DESCRIPTION",
     buttonLabel: "TROLL_FORCE_CONTROL_PLAYER_BUTTON",
     toggle: true,
+    isSync: true,
   },
   {
     type: "fake_lag",
@@ -69,6 +80,7 @@ const trollActions: TrollAction[] = [
     description: "TROLL_FAKE_LAG_DESCRIPTION",
     buttonLabel: "TROLL_FAKE_LAG_BUTTON",
     toggle: true,
+    isSync: true,
   },
   {
     type: "reverse_control",
@@ -77,6 +89,7 @@ const trollActions: TrollAction[] = [
     description: "TROLL_REVERSE_CONTROL_DESCRIPTION",
     buttonLabel: "TROLL_REVERSE_CONTROL_BUTTON",
     toggle: true,
+    isSync: true,
   },
   {
     type: "clone_follow",
@@ -85,6 +98,7 @@ const trollActions: TrollAction[] = [
     description: "TROLL_CLONE_FOLLOW_DESCRIPTION",
     buttonLabel: "TROLL_CLONE_FOLLOW_BUTTON",
     toggle: true,
+    isSync: false,
   },
   {
     type: "flip_vehicle",
@@ -92,6 +106,8 @@ const trollActions: TrollAction[] = [
     label: "TROLL_FLIP_VEHICLE_LABEL",
     description: "TROLL_FLIP_VEHICLE_DESCRIPTION",
     buttonLabel: "TROLL_FLIP_VEHICLE_BUTTON",
+    toggle: false,
+    isSync: true,
   },
   {
     type: "flip_player",
@@ -99,6 +115,8 @@ const trollActions: TrollAction[] = [
     label: "TROLL_FLIP_PLAYER_LABEL",
     description: "TROLL_FLIP_PLAYER_DESCRIPTION",
     buttonLabel: "TROLL_FLIP_PLAYER_BUTTON",
+    toggle: false,
+    isSync: true,
   },
   {
     type: "nuke_alert_sound",
@@ -107,6 +125,7 @@ const trollActions: TrollAction[] = [
     description: "TROLL_NUKE_ALERT_SOUND_DESCRIPTION",
     buttonLabel: "TROLL_NUKE_ALERT_SOUND_BUTTON",
     toggle: true,
+    isSync: false,
   },
   {
     type: "door_open_close",
@@ -115,6 +134,7 @@ const trollActions: TrollAction[] = [
     description: "TROLL_DOOR_OPEN_CLOSE_DESCRIPTION",
     buttonLabel: "TROLL_DOOR_OPEN_CLOSE_BUTTON",
     toggle: true,
+    isSync: true,
   },
   {
     type: "ultra_slow_walk",
@@ -123,6 +143,7 @@ const trollActions: TrollAction[] = [
     description: "TROLL_ULTRA_SLOW_WALK_DESCRIPTION",
     buttonLabel: "TROLL_ULTRA_SLOW_WALK_BUTTON",
     toggle: true,
+    isSync: true,
   },
   {
     type: "random_time_cycle",
@@ -131,6 +152,7 @@ const trollActions: TrollAction[] = [
     description: "TROLL_RANDOM_TIME_CYCLE_DESCRIPTION",
     buttonLabel: "TROLL_RANDOM_TIME_CYCLE_BUTTON",
     toggle: true,
+    isSync: false,
   },
   {
     type: "2d_game",
@@ -139,6 +161,7 @@ const trollActions: TrollAction[] = [
     description: "TROLL_2D_GAME_DESCRIPTION",
     buttonLabel: "TROLL_2D_GAME_BUTTON",
     toggle: true,
+    isSync: false,
   },
   {
     type: "flip_camera",
@@ -147,6 +170,7 @@ const trollActions: TrollAction[] = [
     description: "TROLL_FLIP_CAMERA_DESCRIPTION",
     buttonLabel: "TROLL_FLIP_CAMERA_BUTTON",
     toggle: true,
+    isSync: false,
   },
   {
     type: "ghost",
@@ -155,6 +179,43 @@ const trollActions: TrollAction[] = [
     description: "TROLL_GHOST_DESCRIPTION",
     buttonLabel: "TROLL_GHOST_BUTTON",
     toggle: true,
+    isSync: false,
+  },
+  {
+    type: "local_invisibility",
+    icon: "user-secret",
+    label: "TROLL_LOCAL_INVISIBILITY_LABEL",
+    description: "TROLL_LOCAL_INVISIBILITY_DESCRIPTION",
+    buttonLabel: "TROLL_LOCAL_INVISIBILITY_BUTTON",
+    toggle: true,
+    isSync: false,
+  },
+  {
+    type: "disable_lights",
+    icon: "lightbulb",
+    label: "TROLL_DISABLE_LIGHTS_LABEL",
+    description: "TROLL_DISABLE_LIGHTS_DESCRIPTION",
+    buttonLabel: "TROLL_DISABLE_LIGHTS_BUTTON",
+    toggle: true,
+    isSync: false,
+  },
+  {
+    type: "shrink_player",
+    icon: "arrows-alt-v",
+    label: "TROLL_SHRINK_PLAYER_LABEL",
+    description: "TROLL_SHRINK_PLAYER_DESCRIPTION",
+    buttonLabel: "TROLL_SHRINK_PLAYER_BUTTON",
+    toggle: true,
+    isSync: false,
+  },
+  {
+    type: "breake_vehicle_wheel",
+    icon: "circle",
+    label: "TROLL_BREAKE_VEHICLE_WHEEL_LABEL",
+    description: "TROLL_BREAKE_VEHICLE_WHEEL_DESCRIPTION",
+    buttonLabel: "TROLL_BREAKE_VEHICLE_WHEEL_BUTTON",
+    toggle: false,
+    isSync: true,
   },
 ];
 

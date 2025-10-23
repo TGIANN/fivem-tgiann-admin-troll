@@ -5,12 +5,23 @@ import { cache } from "@communityox/ox_lib/client";
 const activeSounds: Map<number, number> = new Map();
 
 async function requestScriptAudioBank() {
-  while (!RequestScriptAudioBank("tgiannadmintroll/sounds", false))
+  let currentTimer = GetGameTimer();
+
+  const isTimeout = () => GetGameTimer() - currentTimer >= 2000;
+
+  while (
+    !RequestScriptAudioBank("tgiannadmintroll/sounds", false) &&
+    !isTimeout()
+  )
     await sleep(100);
+
+  return !isTimeout();
 }
 
 export async function playSound(soundFile: string, entity: number = cache.ped) {
-  await requestScriptAudioBank();
+  const loaded = await requestScriptAudioBank();
+  if (!loaded)
+    console.error("Failed to load audio bank: tgiannadmintroll/sounds!");
 
   const soundId = GetSoundId();
 

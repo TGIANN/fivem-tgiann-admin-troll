@@ -8,6 +8,11 @@ import {
   ItemMedia,
   ItemTitle,
 } from "@/components/ui/item";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import useLang from "@/hooks/useLang";
 import usePlayer from "@/hooks/usePlayer";
 import { fetchNui } from "@/lib/fetchNui";
@@ -44,7 +49,17 @@ export default function Action(action: TrollAction) {
         <Icon icon={action.icon} />
       </ItemMedia>
       <ItemContent>
-        <ItemTitle>{t(action.label)}</ItemTitle>
+        <ItemTitle className="gap-[0.7vh] items-baseline">
+          {t(action.label)}
+          {action.isSync && (
+            <Tooltip>
+              <TooltipTrigger>
+                <Icon icon="users" className="text-[1vh]" />
+              </TooltipTrigger>
+              <TooltipContent>{t("TROLL_ACTION_SYNC_TOOLTIP")}</TooltipContent>
+            </Tooltip>
+          )}
+        </ItemTitle>
         <ItemDescription>{t(action.description)}</ItemDescription>
       </ItemContent>
       <ItemActions>

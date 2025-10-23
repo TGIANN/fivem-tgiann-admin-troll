@@ -2,6 +2,7 @@ const lang = {
   ACTION_PLAYER_BUTTON: "Action Player",
   TROLL_ACTION_BUTTON: "Troll Player",
   SEARCH_PLACEHOLDER: "Search...",
+  TROLL_ACTION_SYNC_TOOLTIP: "This action is synchronized with other players",
 
   TROLL_FART_BUTTON: "Fart",
   TROLL_FART_DESCRIPTION: "Make the player emit a funny fart sound.",
@@ -88,6 +89,26 @@ const lang = {
   TROLL_GHOST_LABEL: "Ghost",
   TROLL_GHOST_DESCRIPTION: "Hhost spawn in front of the player.",
   TROLL_GHOST_BUTTON: "Ghost Spawn",
+
+  TROLL_LOCAL_INVISIBILITY_LABEL: "Local Invisibility",
+  TROLL_LOCAL_INVISIBILITY_DESCRIPTION:
+    "The player's character will invisible and visible every few seconds.",
+  TROLL_LOCAL_INVISIBILITY_BUTTON: "Local Invisibility",
+
+  TROLL_DISABLE_LIGHTS_LABEL: "Disable Lights",
+  TROLL_DISABLE_LIGHTS_DESCRIPTION:
+    "Disable the city lights for the player making it very dark.",
+  TROLL_DISABLE_LIGHTS_BUTTON: "Disable Lights",
+
+  TROLL_SHRINK_PLAYER_LABEL: "Shrink Player",
+  TROLL_SHRINK_PLAYER_DESCRIPTION:
+    "Shrink the player's character to a smaller size.",
+  TROLL_SHRINK_PLAYER_BUTTON: "Shrink Player",
+
+  TROLL_BREAKE_VEHICLE_WHEEL_LABEL: "Break Vehicle whell",
+  TROLL_BREAKE_VEHICLE_WHEEL_DESCRIPTION:
+    "Break one of the wheel of the player's current vehicle.",
+  TROLL_BREAKE_VEHICLE_WHEEL_BUTTON: "Break Vehicle whell",
 };
 
 export default lang;

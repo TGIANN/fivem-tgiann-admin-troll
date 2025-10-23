@@ -12,5 +12,6 @@ export interface TrollAction {
   description: keyof Lang;
   buttonLabel: keyof Lang;
   icon: IconProp;
-  toggle?: boolean;
+  toggle: boolean;
+  isSync: boolean;
 }

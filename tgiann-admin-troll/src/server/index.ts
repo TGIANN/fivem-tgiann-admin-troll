@@ -198,10 +198,10 @@ onNet("esx:playerLoaded", (playerId: number, xPlayer: unknown, _: boolean) => {
 
   // @ts-ignore
   // Check newnest esx
-  if (!xPlayer.variables) return;
+  if (!xPlayer.name) return;
 
   // @ts-ignore
-  const name = `[${playerId}] ${xPlayer.variables.firstName} ${xPlayer.variables.lastName}`;
+  const name = `[${playerId}] ${xPlayer.name}`;
   serverPlayer.updatePlayerName(name);
 
   menuOpenedAdminList.emitNetToAdmins(`${cache.resource}:playerNameUpdated`, {
