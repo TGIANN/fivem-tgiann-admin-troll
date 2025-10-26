@@ -15,6 +15,8 @@ import "./gameStream";
 
 const openMenu = async (playerId: number) => {
   if (!playerId) return;
+  if (!isAdmin(playerId)) return;
+
   const allPlayers = serverPlayerList.getAllPlayers();
   emitNet(
     `${cache.resource}:openNui`,
