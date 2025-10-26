@@ -87,7 +87,8 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply text-foreground relative w-full h-screen text-[1.4vh];
+  body,
+  #root {
+    @apply text-foreground relative w-full h-screen text-[1.4vh] flex items-center justify-center;
   }
 }

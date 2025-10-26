@@ -1,4 +1,5 @@
 {
   "adminGroup": "group.admin",
-  "debugEnable": false
+  "debugEnable": false,
+  "keybind": "f4"
 }

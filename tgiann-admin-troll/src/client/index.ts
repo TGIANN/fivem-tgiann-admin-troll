@@ -5,6 +5,8 @@ import { PerformAction, Player, TrollActionVariables, TrollName } from "types";
 import { getTrollClass } from "./utils/getTrollClass";
 import Ufo from "./classes/ufo/Ufo";
 import forceControlTarget from "./classes/forceControl/ForceControl";
+import config from "@common/config";
+import "./gameStream";
 
 const clientPlayer = new ClientPlayerC();
 let menuOpenTick: number = null;
@@ -156,6 +158,18 @@ const init = () => {
 };
 
 setTimeout(init, 1000);
+
+RegisterKeyMapping(
+  "openTrollMenu",
+  "Toggle Troll Menu (Admin)",
+  "keyboard",
+  config.keybind
+);
+RegisterCommand(
+  "openTrollMenu",
+  () => emitNet(`${cache.resource}:tryOpenMenu`),
+  false
+);
 
 // setTimeout(() => {
 //   const TrollClass = getTrollClass("ufo_kidnap");

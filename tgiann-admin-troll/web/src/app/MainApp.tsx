@@ -1,9 +1,8 @@
 import type { CurrentAppPage } from "@/types/main";
-import { cn } from "@/lib/utils";
 import PlayerListContainer from "./playerList/PlayerListContainer";
 import PlayerActionsContainer from "./playerActions/PlayerActionsContainer";
 import useApp from "@/hooks/useApp";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence } from "motion/react";
 import useNuiEvent from "@/hooks/useNuiEvent";
 import {
   addPlayer,
@@ -16,12 +15,8 @@ import { useAppDispatch } from "./hooks";
 import type { Player, TrollName } from "../../../src/types";
 import { useHotkeys } from "react-hotkeys-hook";
 import usePlayer from "@/hooks/usePlayer";
-
-const pageStyles: Record<CurrentAppPage, string> = {
-  playerList:
-    "w-[80vw] h-[80vh] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2",
-  playerActions: "w-[30vw] h-[60vh] left-[2vh] top-1/2 -translate-y-1/2",
-};
+import StreamScreen from "./streamScreen/StreamScreen";
+import AnimateContainer from "@/components/AnimateContainer";
 
 function GetAppPage(page: CurrentAppPage) {
   switch (page) {
@@ -75,33 +70,27 @@ export default function MainApp() {
     "Escape",
     () => {
       if (!isOpen) return;
-
-      if (currentAppPage === "playerActions") {
-        changePage("playerList");
-      } else {
-        closeApp();
-      }
+      closeApp();
     },
     [isOpen, currentAppPage]
   );
 
+  const pageClassName: Record<CurrentAppPage, string> = {
+    playerList: "rounded-[0.6vh] w-[80vw] h-[80vh]",
+    playerActions: "w-[30vw] h-[60vh] left-[2vh]",
+  };
+
   return (
     <AnimatePresence mode="wait">
       {isOpen && (
-        <motion.div
+        <AnimateContainer
           key={"main"}
-          initial={{ opacity: 0.0, scale: 1 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0.0, scale: 0.8 }}
-          className={cn(
-            "bg-background text-accent-foreground absolute rounded-[0.6vh]",
-            "transition-all duration-300",
-            pageStyles[currentAppPage]
-          )}
+          className={pageClassName[currentAppPage]}
         >
           {GetAppPage(currentAppPage)}
-        </motion.div>
+        </AnimateContainer>
       )}
+      <StreamScreen />
     </AnimatePresence>
   );
 }

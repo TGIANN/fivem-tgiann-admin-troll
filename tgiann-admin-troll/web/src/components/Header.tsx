@@ -32,7 +32,7 @@ function HeaderText({
   children?: React.ReactNode;
 }) {
   return (
-    <p>
+    <p className="text-[1.4vh] font-extrabold">
       {text}
       {children}
     </p>

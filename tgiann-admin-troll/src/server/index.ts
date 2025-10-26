@@ -11,24 +11,25 @@ import { debugPrint } from "utils";
 import menuOpenedAdminList from "./classes/menuOpenedAdminList/adminList";
 import config from "@common/config";
 import { isAdmin } from "./utils";
+import "./gameStream";
 
-addCommand(
-  "troll",
-  async (playerId) => {
-    if (!playerId) return;
-    const allPlayers = serverPlayerList.getAllPlayers();
-    emitNet(
-      `${cache.resource}:openNui`,
-      playerId,
-      Array.from(allPlayers.values())
-    );
-    menuOpenedAdminList.addAdmin(playerId);
-  },
-  {
-    help: "Open the admin troll menu",
-    restricted: config.adminGroup,
-  }
-);
+const openMenu = async (playerId: number) => {
+  if (!playerId) return;
+  const allPlayers = serverPlayerList.getAllPlayers();
+  emitNet(
+    `${cache.resource}:openNui`,
+    playerId,
+    Array.from(allPlayers.values())
+  );
+  menuOpenedAdminList.addAdmin(playerId);
+};
+
+addCommand("troll", openMenu, {
+  help: "Open the admin troll menu",
+  restricted: config.adminGroup,
+});
+
+onNet(`${cache.resource}:tryOpenMenu`, () => openMenu(global.source));
 
 onNet(`${cache.resource}:closeNui`, () => {
   const playerId = global.source;
@@ -217,7 +218,7 @@ onNet("QBCore:Server:PlayerLoaded", (xPlayer: unknown) => {
   if (!serverPlayer) return;
 
   // @ts-ignore
-  const name = `[${playerId}] ${xPlayer.PlayerData.charinfo.firstName} ${xPlayer.PlayerData.charinfo.lastName}`;
+  const name = `[${playerId}] ${xPlayer.PlayerData.charinfo.firstname} ${xPlayer.PlayerData.charinfo.lastname}`;
   serverPlayer.updatePlayerName(name);
 
   menuOpenedAdminList.emitNetToAdmins(`${cache.resource}:playerNameUpdated`, {

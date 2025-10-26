@@ -43,3 +43,8 @@ export interface TrollActionVariables {
 }
 
 export type ForceControlKey = "w" | "a" | "s" | "d" | "space";
+
+export interface RequestPeerConnection {
+  targetSrc: number;
+  peerId: string;
+}

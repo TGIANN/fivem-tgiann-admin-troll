@@ -6,7 +6,7 @@ export default function PlayerListContainer() {
   const [searchValue, setSearchValue] = useState("");
 
   return (
-    <div className="">
+    <div className="h-[60vh]">
       <Header searchValue={searchValue} setSearchValue={setSearchValue} />
       <Players searchValue={searchValue} />
     </div>

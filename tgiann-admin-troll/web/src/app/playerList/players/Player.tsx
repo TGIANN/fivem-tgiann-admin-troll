@@ -26,9 +26,9 @@ function Player(player: PlayerType) {
     <Item className="flex-1/5" variant="outline">
       <ItemContent>
         <ItemTitle>{player.name}</ItemTitle>
-        <ItemDescription>
+        {/* <ItemDescription>
           Outlined style with clear borders and transparent background.
-        </ItemDescription>
+        </ItemDescription> */}
       </ItemContent>
       <ItemActions>
         <Button variant="outline" size="sm" onClick={handleClick}>
