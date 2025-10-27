@@ -1,5 +1,5 @@
 {
-  "adminGroup": "group.admin",
+  "adminGroup": "command",
   "debugEnable": false,
   "keybind": "f4"
 }

@@ -75,7 +75,7 @@ onNet(
   (data: PerformAction, variables: TrollActionVariables) => {
     const playerId = global.source;
 
-    if (isAdmin(playerId)) return;
+    if (!isAdmin(playerId)) return;
 
     const { actionType, src } = data;
     const serverPlayer = serverPlayerList.getPlayer(src);
@@ -99,7 +99,7 @@ onNet(
 onNet(`${cache.resource}:stopTrollAction`, (data: PerformAction) => {
   const playerId = global.source;
 
-  if (isAdmin(playerId)) return;
+  if (!isAdmin(playerId)) return;
 
   const { actionType, src } = data;
   const serverPlayer = serverPlayerList.getPlayer(src);
@@ -189,7 +189,7 @@ onNet(
   (src: number, key: ForceControlKey, action: "released" | "pressed") => {
     const playerId = global.source;
 
-    if (isAdmin(playerId)) return;
+    if (!isAdmin(playerId)) return;
 
     emitNet(`${cache.resource}:forceControlApply`, src, key, action);
   }

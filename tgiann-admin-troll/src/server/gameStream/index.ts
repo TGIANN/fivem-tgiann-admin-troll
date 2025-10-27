@@ -1,9 +1,13 @@
 import { cache } from "@communityox/ox_lib";
 import { RequestPeerConnection } from "types";
+import { isAdmin } from "../utils";
 
 onNet(
   `${cache.resource}:server:requestPeerConnection`,
   (data: RequestPeerConnection) => {
+    const playerId = global.source;
+    if (!isAdmin(playerId)) return;
+
     emitNet(
       `${cache.resource}:client:requestPeerConnection`,
       data.targetSrc,
