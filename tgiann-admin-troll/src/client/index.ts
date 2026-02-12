@@ -38,14 +38,14 @@ RegisterNuiCallback(
     emitNet(`${cache.resource}:performAction`, data, variables);
 
     cb({});
-  }
+  },
 );
 
 RegisterNuiCallback(
   "stopTrollAction",
   (data: PerformAction, cb: (data: unknown) => {}) => {
     debugPrint(
-      `Requesting stop troll action ${data.actionType} on player ${data.src}`
+      `Requesting stop troll action ${data.actionType} on player ${data.src}`,
     );
 
     if (data.actionType === "force_control_player")
@@ -53,7 +53,7 @@ RegisterNuiCallback(
 
     emitNet(`${cache.resource}:stopTrollAction`, data);
     cb({});
-  }
+  },
 );
 
 RegisterNuiCallback(
@@ -61,7 +61,7 @@ RegisterNuiCallback(
   (isActive: boolean, cb: (data: unknown) => {}) => {
     SetNuiFocusKeepInput(isActive);
     cb({});
-  }
+  },
 );
 
 onNet(`${cache.resource}:openNui`, (players: Player[]) => {
@@ -118,14 +118,14 @@ onNet(
   `${cache.resource}:actionPerformed`,
   (data: { actionType: TrollName; src: number }) => {
     sendNuiMessage("actionPerformed", data);
-  }
+  },
 );
 
 onNet(
   `${cache.resource}:trollStopped`,
   (data: { trollName: TrollName; src: number }) => {
     sendNuiMessage("trollStopped", data);
-  }
+  },
 );
 
 onNet(`${cache.resource}:playerDisconnected`, (src: number) => {
@@ -142,7 +142,7 @@ onNet(
   `${cache.resource}:playerNameUpdated`,
   (data: { name: string; src: number }) => {
     sendNuiMessage("playerNameUpdated", data);
-  }
+  },
 );
 
 onNet(`${cache.resource}:client:spawnUfo`, (coords: number[], src: number) => {
@@ -159,18 +159,23 @@ const init = () => {
 
 setTimeout(init, 1000);
 
-RegisterKeyMapping(
-  "openTrollMenu",
-  "Toggle Troll Menu (Admin)",
-  "keyboard",
-  config.keybind
-);
-RegisterCommand(
-  "openTrollMenu",
-  () => emitNet(`${cache.resource}:tryOpenMenu`),
-  false
-);
+if (config.keybind.enable) {
+  const keyName = `${config.keybind.key}OpenTrollMenu`; // A trick to trick the FiveM cache when the key is changed in the config file.
+  RegisterKeyMapping(
+    keyName,
+    "Toggle Troll Menu (Admin)",
+    "keyboard",
+    config.keybind.key,
+  );
 
+  RegisterCommand(
+    keyName,
+    () => emitNet(`${cache.resource}:tryOpenMenu`),
+    false,
+  );
+}
+
+// TESTING
 // setTimeout(() => {
 //   const TrollClass = getTrollClass("ufo_kidnap");
 //   clientPlayer.playTroll(TrollClass);

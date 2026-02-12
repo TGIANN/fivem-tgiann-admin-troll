@@ -21,15 +21,17 @@ const openMenu = async (playerId: number) => {
   emitNet(
     `${cache.resource}:openNui`,
     playerId,
-    Array.from(allPlayers.values())
+    Array.from(allPlayers.values()),
   );
   menuOpenedAdminList.addAdmin(playerId);
 };
 
-addCommand("troll", openMenu, {
-  help: "Open the admin troll menu",
-  restricted: config.adminGroup,
-});
+if (config.command.enable) {
+  addCommand(config.command.name, openMenu, {
+    help: "Open the admin troll menu",
+    restricted: config.adminGroup,
+  });
+}
 
 onNet(`${cache.resource}:tryOpenMenu`, () => openMenu(global.source));
 
@@ -44,7 +46,7 @@ onNet(`${cache.resource}:playerConnected`, () => {
   serverPlayerList.addPlayer(
     playerId,
     serverPlayer,
-    menuOpenedAdminList.emitNetToAdmins.bind(menuOpenedAdminList)
+    menuOpenedAdminList.emitNetToAdmins.bind(menuOpenedAdminList),
   );
 });
 
@@ -66,7 +68,7 @@ on("playerDropped", () => {
 
   serverPlayerList.removePlayer(
     playerId,
-    menuOpenedAdminList.emitNetToAdmins.bind(menuOpenedAdminList)
+    menuOpenedAdminList.emitNetToAdmins.bind(menuOpenedAdminList),
   );
 });
 
@@ -82,7 +84,7 @@ onNet(
     if (!serverPlayer) return;
 
     debugPrint(
-      `Performing action ${actionType} on player ${serverPlayer.name} (src: ${src})`
+      `Performing action ${actionType} on player ${serverPlayer.name} (src: ${src})`,
     );
 
     const [success] = serverPlayer.playTroll(actionType, variables);
@@ -93,7 +95,7 @@ onNet(
       trollName: actionType,
       src,
     });
-  }
+  },
 );
 
 onNet(`${cache.resource}:stopTrollAction`, (data: PerformAction) => {
@@ -192,7 +194,7 @@ onNet(
     if (!isAdmin(playerId)) return;
 
     emitNet(`${cache.resource}:forceControlApply`, src, key, action);
-  }
+  },
 );
 
 onNet("esx:playerLoaded", (playerId: number, xPlayer: unknown, _: boolean) => {
@@ -242,6 +244,6 @@ on("onResourceStop", (resourceName: string) => {
   }
 
   debugPrint(
-    `Resource stopping, deleting ${allEntities.length} entities spawned by troll actions.`
+    `Resource stopping, deleting ${allEntities.length} entities spawned by troll actions.`,
   );
 });
