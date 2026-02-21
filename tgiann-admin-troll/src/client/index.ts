@@ -6,6 +6,7 @@ import { getTrollClass } from "./utils/getTrollClass";
 import Ufo from "./classes/ufo/Ufo";
 import forceControlTarget from "./classes/forceControl/ForceControl";
 import config from "@common/config";
+import spectate from "./classes/spectate/Spectate";
 import "./gameStream";
 
 const clientPlayer = new ClientPlayerC();
@@ -61,6 +62,21 @@ RegisterNuiCallback(
   (isActive: boolean, cb: (data: unknown) => {}) => {
     SetNuiFocusKeepInput(isActive);
     cb({});
+  },
+);
+
+RegisterNuiCallback(
+  "spectate",
+  async (data: { src: number }, cb: (data: unknown) => {}) => {
+    cb({});
+    if (spectate.isSpectating && spectate.targetSrc === data.src) {
+      spectate.stop();
+      sendNuiMessage("spectateStateChanged", { isSpectating: false });
+    } else {
+      if (spectate.isSpectating) spectate.switchTarget();
+      await spectate.start(data.src);
+      sendNuiMessage("spectateStateChanged", { isSpectating: true });
+    }
   },
 );
 
@@ -177,6 +193,12 @@ if (config.keybind.enable) {
 
 // TESTING
 // setTimeout(() => {
-//   const TrollClass = getTrollClass("ufo_kidnap");
+//   const TrollClass = getTrollClass("clone_circle");
 //   clientPlayer.playTroll(TrollClass);
+// }, 1000);
+
+// setTimeout(() => {
+//   setTick(() => {
+//     OverrideLodscaleThisFrame(0.1);
+//   });
 // }, 1000);

@@ -11,6 +11,7 @@ import {
   setPlayerList,
   updatePlayerName,
 } from "@/features/playerList";
+import { setIsSpectating } from "@/features/main";
 import { useAppDispatch } from "./hooks";
 import type { Player, TrollName } from "../../../src/types";
 import { useHotkeys } from "react-hotkeys-hook";
@@ -43,14 +44,14 @@ export default function MainApp() {
     "actionPerformed",
     (data: { trollName: TrollName; src: Player["src"] }) => {
       dispatch(setPlayerActiveTrollValue({ ...data, isActive: true }));
-    }
+    },
   );
 
   useNuiEvent(
     "trollStopped",
     (data: { trollName: TrollName; src: Player["src"] }) => {
       dispatch(setPlayerActiveTrollValue({ ...data, isActive: false }));
-    }
+    },
   );
 
   useNuiEvent("playerDisconnected", (src: number) => {
@@ -66,13 +67,20 @@ export default function MainApp() {
     dispatch(updatePlayerName(data));
   });
 
+  useNuiEvent(
+    "spectateStateChanged",
+    ({ isSpectating }: { isSpectating: boolean }) => {
+      dispatch(setIsSpectating(isSpectating));
+    },
+  );
+
   useHotkeys(
     "Escape",
     () => {
       if (!isOpen) return;
       closeApp();
     },
-    [isOpen, currentAppPage]
+    [isOpen, currentAppPage],
   );
 
   const pageClassName: Record<CurrentAppPage, string> = {

@@ -26,6 +26,14 @@ import LocalInvisiblity from "../classes/troll/LocalInvisiblity";
 import DisableLights from "../classes/troll/DisableLights";
 import ShrinkPlayer from "../classes/troll/ShrinkPlayer";
 import BreakVehicleWheel from "../classes/troll/BreakVehicleWheel";
+import UltraFog from "../classes/troll/UltraFog";
+import ScaleUpPlayer from "../classes/troll/ScaleUpPlayer";
+import MoonGravity from "../classes/troll/VehicleLowGravity";
+import Shockwave from "../classes/troll/Shockwave";
+import FovCamera from "../classes/troll/FovCamera";
+import CloneCircle from "../classes/troll/CloneCircle";
+import LowPoly from "../classes/troll/LowPoly";
+import SnowWeather from "../classes/troll/SnowWeather";
 
 export function getTrollClass(troll: TrollName): Troll {
   debugPrint("Getting troll class for:" + troll);
@@ -78,6 +86,22 @@ export function getTrollClass(troll: TrollName): Troll {
       return ShrinkPlayer;
     case "breake_vehicle_wheel":
       return BreakVehicleWheel;
+    case "ultra_fog":
+      return UltraFog;
+    case "scale_up_player":
+      return ScaleUpPlayer;
+    case "vehicle_low_gravity":
+      return MoonGravity;
+    case "shockwave":
+      return Shockwave;
+    case "fov_camera":
+      return FovCamera;
+    case "clone_circle":
+      return CloneCircle;
+    case "low_poly":
+      return LowPoly;
+    case "snow_weather":
+      return SnowWeather;
     default:
       return null;
   }

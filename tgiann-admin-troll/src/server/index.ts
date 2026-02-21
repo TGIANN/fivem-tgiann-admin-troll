@@ -1,4 +1,4 @@
-import { addCommand, cache } from "@communityox/ox_lib/server";
+import { addCommand, cache, onClientCallback } from "@communityox/ox_lib/server";
 import serverPlayerList from "./classes/serverPlayerList/serverPlayerList";
 import ServerPlayer from "./classes/serverPlayer/serverPlayer";
 import {
@@ -12,6 +12,51 @@ import menuOpenedAdminList from "./classes/menuOpenedAdminList/adminList";
 import config from "@common/config";
 import { isAdmin } from "./utils";
 import "./gameStream";
+
+const fetchAllPlayerNamesFromFramework = () => {
+  // ESX
+  try {
+    const ESX = exports["es_extended"]?.getSharedObject?.();
+    if (ESX) {
+      const xPlayers = ESX.GetExtendedPlayers();
+
+      for (const xPlayer of xPlayers) {
+        const src = xPlayer.source;
+
+        const serverPlayer = serverPlayerList.getPlayer(src);
+        if (!serverPlayer) return;
+
+        const charName = xPlayer.getName?.();
+        if (!charName) continue;
+
+        const name = `[${src}] ${charName}`;
+        serverPlayer.updatePlayerName(name);
+      }
+      return;
+    }
+  } catch {}
+
+  // QBCore
+  try {
+    const QBCore = exports["qb-core"]?.GetCoreObject?.();
+    if (QBCore) {
+      const qbPlayers = QBCore.Functions.GetQBPlayers();
+      for (const src in qbPlayers) {
+        const player = qbPlayers[src];
+        if (!player?.PlayerData?.charinfo) continue;
+
+        const srcNum = Number(src);
+        const serverPlayer = serverPlayerList.getPlayer(srcNum);
+        if (!serverPlayer) return;
+
+        const { firstname, lastname } = player.PlayerData.charinfo;
+        const name = `[${src}] ${firstname} ${lastname}`;
+        serverPlayer.updatePlayerName(name);
+      }
+      return;
+    }
+  } catch {}
+};
 
 const openMenu = async (playerId: number) => {
   if (!playerId) return;
@@ -231,6 +276,15 @@ onNet("QBCore:Server:PlayerLoaded", (xPlayer: unknown) => {
   });
 });
 
+onClientCallback(`${cache.resource}:getPlayerCoords`, (playerId, targetSrc: number) => {
+  if (!isAdmin(playerId)) return null;
+
+  const targetPed = GetPlayerPed(targetSrc.toString());
+  if (!targetPed) return null;
+
+  return GetEntityCoords(targetPed);
+});
+
 on("onResourceStop", (resourceName: string) => {
   if (cache.resource !== resourceName) return;
 
@@ -246,4 +300,9 @@ on("onResourceStop", (resourceName: string) => {
   debugPrint(
     `Resource stopping, deleting ${allEntities.length} entities spawned by troll actions.`,
   );
+});
+
+on("onResourceStart", (resourceName: string) => {
+  if (cache.resource !== resourceName) return;
+  setTimeout(() => fetchAllPlayerNamesFromFramework(), 3000);
 });

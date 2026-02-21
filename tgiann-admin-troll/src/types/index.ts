@@ -22,7 +22,15 @@ export type TrollName =
   | "local_invisibility"
   | "disable_lights"
   | "shrink_player"
-  | "breake_vehicle_wheel";
+  | "breake_vehicle_wheel"
+  | "ultra_fog"
+  | "scale_up_player"
+  | "vehicle_low_gravity"
+  | "shockwave"
+  | "fov_camera"
+  | "clone_circle"
+  | "low_poly"
+  | "snow_weather";
 
 export interface Player {
   name: string;

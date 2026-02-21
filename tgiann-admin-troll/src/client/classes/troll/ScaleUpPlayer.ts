@@ -2,7 +2,7 @@ import { cache } from "@communityox/ox_lib";
 import MainTroll from ".";
 import scaleEntity from "../../utils/scaleEntity";
 
-class ShrinkPlayer extends MainTroll {
+class ScaleUpPlayer extends MainTroll {
   private tick: number;
 
   private clearTick() {
@@ -13,7 +13,7 @@ class ShrinkPlayer extends MainTroll {
   }
 
   async start() {
-    const randomScale = Math.random() * 0.8 + 0.1;
+    const randomScale = 1.2 + Math.random() * 0.8;
 
     this.tick = setTick(() => {
       scaleEntity(cache.ped, randomScale);
@@ -28,4 +28,4 @@ class ShrinkPlayer extends MainTroll {
   }
 }
 
-export default new ShrinkPlayer("shrink_player");
+export default new ScaleUpPlayer("scale_up_player");

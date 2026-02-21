@@ -1,6 +1,6 @@
 import MainTroll from ".";
 
-class FartTwo extends MainTroll {
+class FlipCamera extends MainTroll {
   private flippedCamera: number;
   private tick: number;
 
@@ -32,7 +32,7 @@ class FartTwo extends MainTroll {
         700,
         0,
         0,
-        2
+        2,
       );
     });
 
@@ -47,4 +47,4 @@ class FartTwo extends MainTroll {
   }
 }
 
-export default new FartTwo("flip_camera");
+export default new FlipCamera("flip_camera");

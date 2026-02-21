@@ -109,6 +109,45 @@ const lang = {
   TROLL_BREAKE_VEHICLE_WHEEL_DESCRIPTION:
     "Break one of the wheel of the player's current vehicle.",
   TROLL_BREAKE_VEHICLE_WHEEL_BUTTON: "Break Vehicle whell",
+
+  TROLL_ULTRA_FOG_LABEL: "Ultra Fog",
+  TROLL_ULTRA_FOG_DESCRIPTION:
+    "Create an extremely dense fog around the player, reducing visibility to near zero.",
+  TROLL_ULTRA_FOG_BUTTON: "Ultra Fog",
+
+  TROLL_SCALE_UP_PLAYER_LABEL: "Scale Up Player",
+  TROLL_SCALE_UP_PLAYER_DESCRIPTION:
+    "Gradually increase the player's character size to a giant scale.",
+  TROLL_SCALE_UP_PLAYER_BUTTON: "Scale Up Player",
+
+  TROLL_VEHICLE_LOW_GRAVITY_LABEL: "Vehicle Low Gravity",
+  TROLL_VEHICLE_LOW_GRAVITY_DESCRIPTION:
+    "Reduce the gravity affecting the player's current vehicle, making it float and bounce more.",
+  TROLL_VEHICLE_LOW_GRAVITY_BUTTON: "Vehicle Low Gravity",
+
+  TROLL_SHOCKWAVE_LABEL: "Shockwave",
+  TROLL_SHOCKWAVE_DESCRIPTION:
+    "Create a shockwave around the player that knocks back nearby entities.",
+  TROLL_SHOCKWAVE_BUTTON: "Shockwave",
+
+  TROLL_FOV_CAMERA_LABEL: "FOV Camera",
+  TROLL_FOV_CAMERA_DESCRIPTION: "It changes the player's camera Fov.",
+  TROLL_FOV_CAMERA_BUTTON: "FOV Camera",
+
+  TROLL_CLONE_CIRCLE_LABEL: "Clone Circle",
+  TROLL_CLONE_CIRCLE_DESCRIPTION:
+    "Clone nearby players and surround the target in a circle formation.",
+  TROLL_CLONE_CIRCLE_BUTTON: "Clone Circle",
+
+  TROLL_LOW_POLY_LABEL: "Low Poly",
+  TROLL_LOW_POLY_DESCRIPTION:
+    "Reduce the world's level of detail, making everything look low poly.",
+  TROLL_LOW_POLY_BUTTON: "Low Poly",
+
+  TROLL_SNOW_WEATHER_LABEL: "Snow Weather",
+  TROLL_SNOW_WEATHER_DESCRIPTION:
+    "Make it snow for the player with full winter weather effects.",
+  TROLL_SNOW_WEATHER_BUTTON: "Snow Weather",
 };
 
 export default lang;
